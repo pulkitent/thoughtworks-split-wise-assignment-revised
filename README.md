@@ -4,20 +4,20 @@ Now they need need an application that can tell how much a person owes and how m
 
 Sample Input : (you can keep this sample input in your code/file - ie no need for user input, but you should not hardcode the number of friends in the group)
 ————————
-A spent 100 for Snacks for A, B, C, D
-B spent 500 for Taxi for C, D
-D spent 300 for Bus for A, B
+A spent 100 for Snacks for A, B, C, D.
+B spent 500 for Taxi for C, D.
+D spent 300 for Bus for A, B.
 
 Sample output:
 
-A gives 75
-B gets 325
-C gives 275
+A gives 75,
+B gets 325,
+C gives 275,
 D gets 25
 
 Extensions:
     •Find the person to person transactions:
-          C needs to pay 275 to B
-          A needs to pay 50 to B
+          C needs to pay 275 to B,
+          A needs to pay 50 to B,
           A needs to pay 25 to D
     •Introduce weightage (uneven split). For an expense of 100, Person A incurs 75 and Person B incurs 25. For eg. {A: 0.1}, {B: 0.2}, {C: 0.7}
