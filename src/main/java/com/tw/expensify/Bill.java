@@ -15,7 +15,7 @@ class Bill {
         this.paidFor = paidFor;
     }
 
-    void settleIndividualExpense() {
+    void settleIndividualExpense(List<Friend> friends) {
         int friendsCount = paidFor.size();
         int perHeadAmount = amount / friendsCount;
 

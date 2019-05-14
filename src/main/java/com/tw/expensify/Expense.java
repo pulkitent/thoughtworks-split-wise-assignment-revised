@@ -9,9 +9,11 @@ class Expense {
         this.bills = bills;
     }
 
-    void settle() {
+    void settle(List<Friend> friends) {
         for (Bill bill : bills) {
-            bill.settleIndividualExpense();
+            bill.settleIndividualExpense(friends);
         }
+
+        new Friend("", 0, 0).findWhoPaysWhom(friends);
     }
 }

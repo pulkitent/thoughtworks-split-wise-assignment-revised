@@ -9,9 +9,13 @@ public class SplitWise {
 
         List<Bill> bills = createBills(friends);
         Expense expense = new Expense(bills);
-        expense.settle();
+        expense.settle(friends);
 
-        friends.forEach(System.out::println);
+        for (Friend friend : friends) {
+            for (Amount amount : friend.amounts) {
+                System.out.println(friend + " has to pay " + amount);
+            }
+        }
     }
 
     private static List<Bill> createBills(List<Friend> friends) {
