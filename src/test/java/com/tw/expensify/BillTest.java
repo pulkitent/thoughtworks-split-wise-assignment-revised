@@ -15,7 +15,7 @@ class BillTest {
         Bill bill = getBillForTwoFriends(friends);
         List<Friend> expectedSettledFriend = getExpectedSettledFriends();
 
-        bill.settleIndividualExpense();
+        bill.settleIndividualExpense(friends);
 
         Assertions.assertEquals(friends, expectedSettledFriend);
     }
@@ -23,13 +23,15 @@ class BillTest {
     @Test
     @DisplayName("Should settle single bill for a single person")
     void expectsToSettleIndividualExpense() {
+        List<Friend> friends = new LinkedList<>();
+        List<Friend> firstBillPaidFor = new LinkedList<>();
         Friend friend = new Friend("Pulkit", 100, 0);
         Friend settledFriend = new Friend("Pulkit", 100, 100);
-        List<Friend> firstBillPaidFor = new LinkedList<>();
+        friends.add(friend);
         firstBillPaidFor.add(friend);
         Bill bill = new Bill(100, BillType.FOOD, friend, firstBillPaidFor);
 
-        bill.settleIndividualExpense();
+        bill.settleIndividualExpense(friends);
 
         Assertions.assertEquals(friend, settledFriend);
     }

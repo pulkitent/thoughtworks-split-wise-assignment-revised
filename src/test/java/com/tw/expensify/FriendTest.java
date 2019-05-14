@@ -31,7 +31,7 @@ class FriendTest {
     @DisplayName("Should stringify friend properly")
     void expectsToStringToStringify() {
         Friend friend = new Friend("Pulkit", 100, 0);
-        String expectedStringifyFriend = "Pulkit gets 100";
+        String expectedStringifyFriend = "Pulkit";
 
         Assertions.assertEquals(expectedStringifyFriend, friend.toString());
     }
@@ -43,5 +43,14 @@ class FriendTest {
         Friend anotherFriend = new Friend("Pulkit", 100, 0);
 
         Assertions.assertEquals(friend, anotherFriend);
+    }
+
+    @Test
+    @DisplayName("Should compare two friend")
+    void expectsToCompareTwoFriends() {
+        Friend friend = new Friend("Rahul", 300, 100);
+        Friend anotherFriend = new Friend("Pulkit", 200, 200);
+
+        Assertions.assertEquals(200, friend.compare(friend, anotherFriend));
     }
 }

@@ -16,7 +16,7 @@ class ExpenseTest {
         Expense expense = new Expense(bills);
         List<Friend> settledFriends = getFourExpectedSettledFriends();
 
-        expense.settle();
+        expense.settle(friends);
 
         Assertions.assertEquals(settledFriends, friends);
     }
@@ -29,7 +29,7 @@ class ExpenseTest {
         Expense expense = new Expense(bills);
         List<Friend> settledFriends = getTwoExpectedSettledFriends();
 
-        expense.settle();
+        expense.settle(friends);
 
         Assertions.assertEquals(settledFriends, friends);
     }
@@ -72,8 +72,8 @@ class ExpenseTest {
 
     private List<Friend> getFourExpectedSettledFriends() {
         List<Friend> friends = new LinkedList<>();
-        Friend friend1 = new Friend("Pulkit", 100, 175);
-        Friend friend2 = new Friend("Abhishek", 500, 175);
+        Friend friend1 = new Friend("Pulkit", 100, 150);
+        Friend friend2 = new Friend("Abhishek", 500, -150);
         Friend friend3 = new Friend("Ravinder", 0, 275);
         Friend friend4 = new Friend("Charan", 300, 275);
 
