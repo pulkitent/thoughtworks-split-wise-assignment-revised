@@ -1,4 +1,4 @@
-package com.tw.expensify;
+package com.tw.splitwise;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ class BillTest {
         Bill bill = getBillForTwoFriends(friends);
         List<Friend> expectedSettledFriend = getExpectedSettledFriends();
 
-        bill.settleIndividualExpense(friends);
+        bill.settle();
 
         Assertions.assertEquals(friends, expectedSettledFriend);
     }
@@ -25,20 +25,20 @@ class BillTest {
     void expectsToSettleIndividualExpense() {
         List<Friend> friends = new LinkedList<>();
         List<Friend> firstBillPaidFor = new LinkedList<>();
-        Friend friend = new Friend("Pulkit", 100, 0);
-        Friend settledFriend = new Friend("Pulkit", 100, 100);
+        Friend friend = new Friend("Pulkit", 100.0, 0.0);
+        Friend settledFriend = new Friend("Pulkit", 100.0, 100.0);
         friends.add(friend);
         firstBillPaidFor.add(friend);
-        Bill bill = new Bill(100, BillType.FOOD, friend, firstBillPaidFor);
+        Bill bill = new Bill(100.0, BillType.FOOD, friend, firstBillPaidFor, null);
 
-        bill.settleIndividualExpense(friends);
+        bill.settle();
 
         Assertions.assertEquals(friend, settledFriend);
     }
 
     private List<Friend> getExpectedSettledFriends() {
-        Friend settledFriend = new Friend("Pulkit", 100, 50);
-        Friend anotherSettledFriend = new Friend("Abhishek", 500, 50);
+        Friend settledFriend = new Friend("Pulkit", 100.0, 50.0);
+        Friend anotherSettledFriend = new Friend("Abhishek", 500.0, 50.0);
 
         List<Friend> friends = new LinkedList<>();
         friends.add(settledFriend);
@@ -48,13 +48,13 @@ class BillTest {
     }
 
     private Bill getBillForTwoFriends(List<Friend> friends) {
-        Friend friend1 = new Friend("Pulkit", 100, 0);
-        Friend friend2 = new Friend("Abhishek", 500, 0);
+        Friend friend1 = new Friend("Pulkit", 100.0, 0.0);
+        Friend friend2 = new Friend("Abhishek", 500.0, 0.0);
 
         friends.add(friend1);
         friends.add(friend2);
 
-        Bill bill = new Bill(100, BillType.FOOD, friend1, friends);
+        Bill bill = new Bill(100.0, BillType.FOOD, friend1, friends, null);
         return bill;
     }
 }
