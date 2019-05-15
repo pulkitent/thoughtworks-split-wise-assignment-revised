@@ -24,12 +24,12 @@ class Friend {
         this.amountToPay += amount;
     }
 
-    void settlement1(Friend friend, Double amount) {
+    void settlementAmountWith(Friend friend, Double amount) {
         this.amountToPay = this.amountToPay - amount;
         this.addSettlementAmount(new SettlementAmount(amount, friend));
     }
 
-    void settlement2(Friend friend, Double amount) {
+    void receiveAmountFrom(Friend friend, Double amount) {
         this.amountToPay = this.amountToPay - amount;
         friend.addSettlementAmount(new SettlementAmount(amount, this));
     }

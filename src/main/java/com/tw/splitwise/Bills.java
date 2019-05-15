@@ -36,10 +36,10 @@ class Bills {
             Double amountCanBePaid = -payer.calculatePaidAndToPayDifference();
 
             if (amountCanBePaid > amountToBeReceived) {
-                payer.settlement1(receiver, amountToBeReceived);
+                payer.settlementAmountWith(receiver, amountToBeReceived);
                 receiverIndex++;
             } else if (amountToBeReceived > amountCanBePaid) {
-                receiver.settlement2(payer, amountCanBePaid);
+                receiver.receiveAmountFrom(payer, amountCanBePaid);
                 payerIndex++;
             } else {
                 payer.addSettlementAmount(new SettlementAmount(amountCanBePaid, receiver));
