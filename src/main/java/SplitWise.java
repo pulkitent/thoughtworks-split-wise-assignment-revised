@@ -13,7 +13,7 @@ public class SplitWise {
         bills.settle(friends);
 
         for (Friend friend : friends) {
-            for (SettlementAmount settlementAmount : friend.printSettlementAmount()) {
+            for (SettlementAmount settlementAmount : friend.getSettlementAmount()) {
                 System.out.println(friend + " has to pay " + settlementAmount);
             }
         }

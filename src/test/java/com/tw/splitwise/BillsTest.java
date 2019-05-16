@@ -12,11 +12,10 @@ class ExpenseTest {
     @DisplayName("Should settle expense between four friends having three bills")
     void expectsExpensesToBeSettledForFourFriends() {
         List<Friend> friends = new LinkedList<>();
-        List<Bill> bills = createThreeTestBills(friends);
-        Bills expense = new Bills(bills);
+        Bills bills = new Bills(createThreeTestBills(friends));
         List<Friend> settledFriends = getFourExpectedSettledFriends();
 
-        expense.settle(friends);
+        bills.settle(friends);
 
         Assertions.assertEquals(settledFriends, friends);
     }
