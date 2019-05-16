@@ -3,11 +3,11 @@ package com.tw.splitwise;
 import java.util.Objects;
 
 //This class represents debt amount to be paid to whom
-class SettlementAmount {
+public class SettlementAmount {
     private final Double value;
     private final Friend toBePaidTo;
 
-    SettlementAmount(Double value, Friend toBePaidTo) {
+    public SettlementAmount(Double value, Friend toBePaidTo) {
         this.value = value;
         this.toBePaidTo = toBePaidTo;
     }

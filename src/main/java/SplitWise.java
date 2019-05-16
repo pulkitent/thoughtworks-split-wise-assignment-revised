@@ -1,4 +1,4 @@
-package com.tw.splitwise;
+import com.tw.splitwise.*;
 
 import java.util.HashMap;
 import java.util.LinkedList;

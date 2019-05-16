@@ -3,20 +3,20 @@ package com.tw.splitwise;
 import java.util.*;
 
 //This class represents a person who was involved in the trip
-class Friend {
+public class Friend {
     private final String name;
     private Double amountToPay;
     private Double amountPaid;
     private final List<SettlementAmount> settlementAmounts;
 
-    Friend(String name, Double amountPaid, Double amountToPay) {
+    public Friend(String name, Double amountPaid, Double amountToPay) {
         this.name = name;
         this.amountPaid = amountPaid;
         this.amountToPay = amountToPay;
         this.settlementAmounts = new LinkedList<>();
     }
 
-    List<SettlementAmount> printSettlementAmount() {
+    public List<SettlementAmount> getSettlementAmount() {
         return settlementAmounts;
     }
 

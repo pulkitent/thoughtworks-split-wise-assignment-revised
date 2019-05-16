@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 //This class represents statement of the money owed for services
-class Bill {
+public class Bill {
     private final Double amount;
     private final BillType type;
     private final Friend paidBy;
@@ -13,7 +13,7 @@ class Bill {
 
     private final static Double defaultExpenseRatio = 1.0;
 
-    Bill(Double amount, BillType type, Friend paidBy, List<Friend> paidFor, Map<Friend, Double> expenseRatio) {
+    public Bill(Double amount, BillType type, Friend paidBy, List<Friend> paidFor, Map<Friend, Double> expenseRatio) {
         this.amount = amount;
         this.type = type;
         this.paidBy = paidBy;

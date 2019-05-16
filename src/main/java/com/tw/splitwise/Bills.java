@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //This class represents bills to settle
-class Bills {
+public class Bills {
     private final List<Bill> bills;
 
-    Bills(List<Bill> bills) {
+   public Bills(List<Bill> bills) {
         this.bills = bills;
     }
 
-    void settle(List<Friend> friends) {
+    public void settle(List<Friend> friends) {
         for (Bill bill : bills) {
             bill.settle();
         }
