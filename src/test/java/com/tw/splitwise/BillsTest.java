@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-class ExpenseTest {
+class BillsTest {
     @Test
     @DisplayName("Should settle expense between four friends having three bills")
     void expectsExpensesToBeSettledForFourFriends() {
@@ -24,11 +24,10 @@ class ExpenseTest {
     @DisplayName("Should settle expense between two friends having two bills")
     void expectsExpensesToBeSettled() {
         List<Friend> friends = new LinkedList<>();
-        List<Bill> bills = createTwoTestBills(friends);
-        Bills expense = new Bills(bills);
+        Bills bills = new Bills(createTwoTestBills(friends));
         List<Friend> settledFriends = getTwoExpectedSettledFriends();
 
-        expense.settle(friends);
+        bills.settle(friends);
 
         Assertions.assertEquals(settledFriends, friends);
     }

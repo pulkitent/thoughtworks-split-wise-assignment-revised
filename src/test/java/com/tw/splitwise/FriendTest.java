@@ -53,4 +53,21 @@ class FriendTest {
 
         Assertions.assertEquals(200, friend.compare(anotherFriend));
     }
+
+    @Test
+    @DisplayName("Should compute hash of name properly")
+    void expectedHashToBeComputed() {
+        Friend friend = new Friend("Rahul", 300.0, 100.0);
+        int expectedHash = 78722159;
+
+        Assertions.assertEquals(expectedHash, friend.hashCode());
+    }
+
+    @Test
+    @DisplayName("Should get setllement amount")
+    void expectsToGetSettlementAmount() {
+        Friend friend = new Friend("Rahul", 300.0, 100.0);
+
+        Assertions.assertEquals(0, friend.getSettlementAmount().size());
+    }
 }
