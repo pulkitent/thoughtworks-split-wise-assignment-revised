@@ -23,11 +23,15 @@ class Bill {
 
     void settle() {
         int friendsCount = paidFor.size();
-        Double perHeadAmount = (this.amount / friendsCount);
         for (Friend friend : this.paidFor) {
             Double ratio = findExpenseRatio(friend);
-            Double ratioSpecificAmount = ratio * perHeadAmount;
-            friend.updateAmountToPay(ratioSpecificAmount);
+            Double perFriendAmount = ratio * this.amount;
+
+            if (Double.compare(ratio, defaultExpenseRatio) == 0) {
+                perFriendAmount = perFriendAmount / friendsCount;
+            }
+
+            friend.updateAmountToPay(perFriendAmount);
         }
     }
 
