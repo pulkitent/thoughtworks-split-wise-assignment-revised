@@ -51,6 +51,6 @@ class FriendTest {
         Friend friend = new Friend("Rahul", 300.0, 100.0);
         Friend anotherFriend = new Friend("Pulkit", 200.0, 200.0);
 
-        Assertions.assertEquals(-200, friend.compare(anotherFriend));
+        Assertions.assertEquals(200, friend.compare(anotherFriend));
     }
 }

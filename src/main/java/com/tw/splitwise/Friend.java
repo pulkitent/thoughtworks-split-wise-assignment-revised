@@ -6,7 +6,7 @@ import java.util.*;
 class Friend {
     private final String name;
     private Double amountToPay;
-    private final Double amountPaid;
+    private Double amountPaid;
     private final List<SettlementAmount> settlementAmounts;
 
     Friend(String name, Double amountPaid, Double amountToPay) {
@@ -30,7 +30,7 @@ class Friend {
     }
 
     void receiveAmountFrom(Friend friend, Double amount) {
-        this.amountToPay = this.amountToPay - amount;
+        this.amountPaid = this.amountPaid - amount;
         friend.addSettlementAmount(new SettlementAmount(amount, this));
     }
 
@@ -46,7 +46,7 @@ class Friend {
         Integer finalAmount = (int) Math.abs(friend.amountPaid - friend.amountToPay);
         Integer anotherFinalAmount = (int) Math.abs(this.amountPaid - this.amountToPay);
 
-        return finalAmount - anotherFinalAmount;
+        return anotherFinalAmount - finalAmount;
     }
 
     @Override

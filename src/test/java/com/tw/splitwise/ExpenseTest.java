@@ -72,8 +72,8 @@ class ExpenseTest {
 
     private List<Friend> getFourExpectedSettledFriends() {
         List<Friend> friends = new LinkedList<>();
-        Friend friend1 = new Friend("Pulkit", 100.0, 175.0);
-        Friend friend2 = new Friend("Abhishek", 500.0, 175.0);
+        Friend friend1 = new Friend("Pulkit", 100.0, 150.0);
+        Friend friend2 = new Friend("Abhishek", 450.0, 175.0);
         Friend friend3 = new Friend("Ravinder", 0.0, 275.0);
         Friend friend4 = new Friend("Charan", 300.0, 275.0);
 
