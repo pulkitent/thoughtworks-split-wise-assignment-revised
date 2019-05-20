@@ -29,7 +29,7 @@ class BillTest {
         Friend settledFriend = new Friend("Pulkit", 100.0, 100.0);
         friends.add(friend);
         firstBillPaidFor.add(friend);
-        Bill bill = new Bill(100.0, BillType.FOOD, friend, firstBillPaidFor, null);
+        Bill bill = new Bill(100.0, BillType.FOOD, firstBillPaidFor, null);
 
         bill.settle();
 
@@ -54,7 +54,7 @@ class BillTest {
         friends.add(friend1);
         friends.add(friend2);
 
-        Bill bill = new Bill(100.0, BillType.FOOD, friend1, friends, null);
+        Bill bill = new Bill(100.0, BillType.FOOD, friends, null);
         return bill;
     }
 }

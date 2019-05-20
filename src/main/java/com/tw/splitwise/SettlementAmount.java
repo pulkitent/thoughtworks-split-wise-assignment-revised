@@ -7,7 +7,7 @@ public class SettlementAmount {
     private final Double value;
     private final Friend toBePaidTo;
 
-    public SettlementAmount(Double value, Friend toBePaidTo) {
+    SettlementAmount(Double value, Friend toBePaidTo) {
         this.value = value;
         this.toBePaidTo = toBePaidTo;
     }

@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-class BillsTest {
+class GroupTest {
     @Test
     @DisplayName("Should settle expense between four friends having three bills")
     void expectsExpensesToBeSettledForFourFriends() {
         List<Friend> friends = new LinkedList<>();
-        Bills bills = new Bills(createThreeTestBills(friends));
+        Group group = new Group(createThreeTestBills(friends));
         List<Friend> settledFriends = getFourExpectedSettledFriends();
 
-        bills.settle(friends);
+        group.settle(friends);
 
         Assertions.assertEquals(settledFriends, friends);
     }
@@ -24,10 +24,10 @@ class BillsTest {
     @DisplayName("Should settle expense between two friends having two bills")
     void expectsExpensesToBeSettled() {
         List<Friend> friends = new LinkedList<>();
-        Bills bills = new Bills(createTwoTestBills(friends));
+        Group group = new Group(createTwoTestBills(friends));
         List<Friend> settledFriends = getTwoExpectedSettledFriends();
 
-        bills.settle(friends);
+        group.settle(friends);
 
         Assertions.assertEquals(settledFriends, friends);
     }
@@ -58,8 +58,8 @@ class BillsTest {
         secondBillPaidFor.add(friend1);
         secondBillPaidFor.add(friend2);
 
-        Bill bill1 = new Bill(100.0, BillType.FOOD, friend1, firstBillPaidFor, null);
-        Bill bill2 = new Bill(500.0, BillType.CAB, friend2, secondBillPaidFor, null);
+        Bill bill1 = new Bill(100.0, BillType.FOOD, firstBillPaidFor, null);
+        Bill bill2 = new Bill(500.0, BillType.CAB, secondBillPaidFor, null);
 
         List<Bill> bills = new LinkedList<>();
         bills.add(bill1);
@@ -108,9 +108,9 @@ class BillsTest {
         thirdBillPaidFor.add(friend1);
         thirdBillPaidFor.add(friend2);
 
-        Bill bill1 = new Bill(100.0, BillType.FOOD, friend1, firstBillPaidFor, null);
-        Bill bill2 = new Bill(500.0, BillType.CAB, friend2, secondBillPaidFor, null);
-        Bill bill3 = new Bill(300.0, BillType.MOVIE, friend4, thirdBillPaidFor, null);
+        Bill bill1 = new Bill(100.0, BillType.FOOD, firstBillPaidFor, null);
+        Bill bill2 = new Bill(500.0, BillType.CAB, secondBillPaidFor, null);
+        Bill bill3 = new Bill(300.0, BillType.MOVIE, thirdBillPaidFor, null);
 
         List<Bill> bills = new LinkedList<>();
         bills.add(bill1);

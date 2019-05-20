@@ -3,11 +3,11 @@ package com.tw.splitwise;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//This class represents bills to settle
-public class Bills {
+//This class represents a group having bills to settle
+public class Group {
     private final List<Bill> bills;
 
-   public Bills(List<Bill> bills) {
+    public Group(List<Bill> bills) {
         this.bills = bills;
     }
 
@@ -24,29 +24,7 @@ public class Bills {
         List<Friend> receivers = findReceivers(friends);
 
         sortPayersAndReceivers(payers, receivers);
-
-        Integer payerIndex = 0;
-        Integer receiverIndex = 0;
-
-        while (payerIndex < payers.size()) {
-            Friend receiver = receivers.get(receiverIndex);
-            Double amountToBeReceived = receiver.calculatePaidAndToPayDifference();
-
-            Friend payer = payers.get(payerIndex);
-            Double amountCanBePaid = -payer.calculatePaidAndToPayDifference();
-
-            if (amountCanBePaid > amountToBeReceived) {
-                payer.settlementAmountWith(receiver, amountToBeReceived);
-                receiverIndex++;
-            } else if (amountToBeReceived > amountCanBePaid) {
-                receiver.receiveAmountFrom(payer, amountCanBePaid);
-                payerIndex++;
-            } else {
-                payer.addSettlementAmount(new SettlementAmount(amountCanBePaid, receiver));
-                payerIndex++;
-                receiverIndex++;
-            }
-        }
+        findWhoPaysHowMuchAmount(payers, receivers);
     }
 
     private List<Friend> findPayers(List<Friend> friends) {
@@ -65,5 +43,30 @@ public class Bills {
         FriendComparator comparator = new FriendComparator();
         payers.sort(comparator);
         receivers.sort(comparator);
+    }
+
+    private void findWhoPaysHowMuchAmount(List<Friend> payers, List<Friend> receivers) {
+        Integer payerIndex = 0;
+        Integer receiverIndex = 0;
+
+        while (payerIndex < payers.size()) {
+            Friend receiver = receivers.get(receiverIndex);
+            Double amountToBeReceived = receiver.calculatePaidAndToPayDifference();
+
+            Friend payer = payers.get(payerIndex);
+            Double amountCanBePaid = -payer.calculatePaidAndToPayDifference();
+
+            if (amountCanBePaid > amountToBeReceived) {
+                payer.settleAmountWith(receiver, amountToBeReceived);
+                receiverIndex++;
+            } else if (amountToBeReceived > amountCanBePaid) {
+                receiver.receiveAmountFrom(payer, amountCanBePaid);
+                payerIndex++;
+            } else {
+                payer.addSettlementAmount(new SettlementAmount(amountCanBePaid, receiver));
+                payerIndex++;
+                receiverIndex++;
+            }
+        }
     }
 }

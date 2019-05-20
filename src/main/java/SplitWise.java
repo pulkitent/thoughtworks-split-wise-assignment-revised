@@ -9,8 +9,8 @@ public class SplitWise {
     public static void main(String[] arg) {
         List<Friend> friends = new LinkedList<>();
 
-        Bills bills = new Bills(createBills(friends));
-        bills.settle(friends);
+        Group group = new Group(createBills(friends));
+        group.settle(friends);
 
         for (Friend friend : friends) {
             for (SettlementAmount settlementAmount : friend.getSettlementAmount()) {
@@ -51,9 +51,9 @@ public class SplitWise {
         expenseRatioForBill2.put(friend3, 0.60);
         expenseRatioForBill2.put(friend4, 0.40);
 
-        Bill bill1 = new Bill(100.0, BillType.FOOD, friend1, firstBillPaidFor, expenseRatioForBill1);
-        Bill bill2 = new Bill(500.0, BillType.CAB, friend2, secondBillPaidFor, expenseRatioForBill2);
-        Bill bill3 = new Bill(300.0, BillType.MOVIE, friend4, thirdBillPaidFor, expenseRatioForBill3);
+        Bill bill1 = new Bill(100.0, BillType.FOOD, firstBillPaidFor, expenseRatioForBill1);
+        Bill bill2 = new Bill(500.0, BillType.CAB, secondBillPaidFor, expenseRatioForBill2);
+        Bill bill3 = new Bill(300.0, BillType.MOVIE, thirdBillPaidFor, expenseRatioForBill3);
 
         List<Bill> bills = new LinkedList<>();
         bills.add(bill1);
