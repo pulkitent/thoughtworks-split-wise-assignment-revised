@@ -3,7 +3,7 @@ package com.tw.splitwise;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//This class represents a group having bills to settle
+//This class represents a group having bills to settleBills
 public class Group {
     private final List<Bill> bills;
 
@@ -11,7 +11,7 @@ public class Group {
         this.bills = bills;
     }
 
-    public void settle(List<Friend> friends) {
+    public void settleBills(List<Friend> friends) {
         for (Bill bill : bills) {
             bill.settle();
         }

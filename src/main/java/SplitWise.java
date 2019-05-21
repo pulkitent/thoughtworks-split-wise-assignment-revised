@@ -1,22 +1,30 @@
 import com.tw.splitwise.*;
+import com.tw.io.*;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 public class SplitWise {
-    public static void main(String[] arg) {
+    public static void main(String[] arg) throws IOException {
         List<Friend> friends = new LinkedList<>();
 
-        Group group = new Group(createBills(friends));
-        group.settle(friends);
+        Scanner scanner = new Scanner(System.in);
+        Reader reader = new ConsoleReader();
+        Writer writer = new ConsoleWriter();
 
-        for (Friend friend : friends) {
-            for (SettlementAmount settlementAmount : friend.getSettlementAmount()) {
-                System.out.println(friend + " has to pay " + settlementAmount);
-            }
+        System.out.println("Enter you choice 1. File reader 2. Console Reader");
+
+        int choice = scanner.nextInt();
+        if (choice == 1) {
+            reader = new TextFileReader();
         }
+
+        List<Bill> bills = reader.read(friends);
+
+        Group group = new Group(bills);
+        group.settleBills(friends);
+
+        writer.write(friends);
     }
 
     private static List<Bill> createBills(List<Friend> friends) {

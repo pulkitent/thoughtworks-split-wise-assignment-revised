@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class FriendTest {
     @Test
-    @DisplayName("Should settle amount for a single friend")
+    @DisplayName("Should settleBills amount for a single friend")
     void expectsAmountToBeSettled() {
         Friend friend = new Friend("Pulkit", 100.0, 0.0);
         Friend settledFriend = new Friend("Pulkit", 100.0, 100.0);
@@ -17,7 +17,7 @@ class FriendTest {
     }
 
     @Test
-    @DisplayName("Should settle amount for a single friend with negative amount to pay")
+    @DisplayName("Should settleBills amount for a single friend with negative amount to pay")
     void expectsAmountToBeSettledForNegativeAmount() {
         Friend friend = new Friend("Pulkit", 100.0, 0.0);
         Friend settledFriend = new Friend("Pulkit", 100.0, -100.0);

@@ -9,7 +9,7 @@ import java.util.List;
 
 class BillTest {
     @Test
-    @DisplayName("Should settle single bill between two friends")
+    @DisplayName("Should settleBills single bill between two friends")
     void expectsToSettleIndividualExpenseForTwoFriends() {
         List<Friend> friends = new LinkedList<>();
         Bill bill = getBillForTwoFriends(friends);
@@ -21,7 +21,7 @@ class BillTest {
     }
 
     @Test
-    @DisplayName("Should settle single bill for a single person")
+    @DisplayName("Should settleBills single bill for a single person")
     void expectsToSettleIndividualExpense() {
         List<Friend> friends = new LinkedList<>();
         List<Friend> firstBillPaidFor = new LinkedList<>();
