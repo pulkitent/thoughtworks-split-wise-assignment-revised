@@ -10,6 +10,7 @@ public class Bill {
     private final List<Friend> paidFor;
     private final Map<Friend, Double> expenseRatio;
 
+    private final static Integer zero = 0;
     private final static Double defaultExpenseRatio = 1.0;
 
     public Bill(Double amount, BillType type, List<Friend> paidFor, Map<Friend, Double> expenseRatio) {
@@ -25,7 +26,7 @@ public class Bill {
             Double ratio = findExpenseRatio(friend);
             Double perFriendAmount = ratio * this.amount;
 
-            if (Double.compare(ratio, defaultExpenseRatio) == 0) {
+            if (Double.compare(ratio, defaultExpenseRatio) == zero) {
                 perFriendAmount = perFriendAmount / friendsCount;
             }
 
