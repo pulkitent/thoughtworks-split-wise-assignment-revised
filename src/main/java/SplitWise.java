@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.*;
 
 public class SplitWise {
+
+    private final static int fileReaderChoice = 1;
+
     public static void main(String[] arg) throws IOException {
         List<Friend> friends = new LinkedList<>();
 
@@ -12,10 +15,10 @@ public class SplitWise {
         Reader reader = new ConsoleReader();
         Writer writer = new ConsoleWriter();
 
-        System.out.println("Enter you choice 1. File reader 2. Console Reader");
+        System.out.println("Enter your choice : 1. File reader 2. Console Reader");
 
         int choice = scanner.nextInt();
-        if (choice == 1) {
+        if (choice == fileReaderChoice) {
             reader = new TextFileReader();
         }
 

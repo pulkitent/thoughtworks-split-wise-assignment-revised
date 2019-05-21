@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleReader implements Reader {
+    private static final int one = 1;
+    private static final int zero = 0;
+    private static final double defaultAmountToPay = 0.0;
 
     @Override
     public List<Bill> read(List<Friend> friends) {
@@ -25,8 +28,8 @@ public class ConsoleReader implements Reader {
         System.out.println("Enter number of Bills");
         int noOfBills = scanner.nextInt();
 
-        for (int billIndex = 0; billIndex < noOfBills; billIndex++) {
-            System.out.println("Enter the amount for bill " + (billIndex + 1));
+        for (int billIndex = zero; billIndex < noOfBills; billIndex++) {
+            System.out.println("Enter the amount for bill " + (billIndex + one));
             Double amount = scanner.nextDouble();
             System.out.println("Enter the type of bill");
             String type = scanner.next();
@@ -39,12 +42,12 @@ public class ConsoleReader implements Reader {
     }
 
     private List<Friend> readFriendsForBillWasPaid(List<Friend> friends, Scanner scanner, int billIndex) {
-        System.out.println("Enter number of friends bill " + (billIndex + 1) + " was paid for");
+        System.out.println("Enter number of friends bill " + (billIndex + one) + " was paid for");
         int paidForCount = scanner.nextInt();
 
         List<Friend> billWasPaidFor = new LinkedList<>();
 
-        for (int paidForIndex = 0; paidForIndex < paidForCount; paidForIndex++) {
+        for (int paidForIndex = zero; paidForIndex < paidForCount; paidForIndex++) {
             System.out.println("Enter the friend id (Starting from 0)");
             int friendId = scanner.nextInt();
 
@@ -57,13 +60,13 @@ public class ConsoleReader implements Reader {
         System.out.println("Enter number of friends involved in the trip");
         int noOfFriends = scanner.nextInt();
 
-        for (int friendIndex = 0; friendIndex < noOfFriends; friendIndex++) {
-            System.out.println("Enter the name of friend no " + (friendIndex + 1));
+        for (int friendIndex = zero; friendIndex < noOfFriends; friendIndex++) {
+            System.out.println("Enter the name of friend no " + (friendIndex + one));
             String name = scanner.next();
             System.out.println("Enter the amount paid by " + name);
             Double amount = scanner.nextDouble();
 
-            Friend friend = new Friend(name, amount, 0.0);
+            Friend friend = new Friend(name, amount, defaultAmountToPay);
             friends.add(friend);
         }
     }
