@@ -10,30 +10,28 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.tw.io.Constant.*;
+
 public class TextFileReader implements Reader {
-    private static final int one = 1;
-    private static final int two = 2;
-    private static final int three = 3;
-    private static final double defaultAmountToPay = 0.0;
-    private static final String comma = ",";
-    private static final String alphabetRegex = "[\\D]";
-    private static final String emptyString = "";
 
     @Override
     public List<Bill> read(List<Friend> friends) throws IOException {
         String line = "";
+        String workingDirectory = System.getProperty("user.dir");
 
-        String friendDetailsFilePath = "/Users/pulkit.gupta/Desktop/splitwise/src/main/resources/FriendDetails.csv";
-        BufferedReader friendFileReader = new BufferedReader(new FileReader(friendDetailsFilePath));
+        readFriendDetails(friends, workingDirectory);
 
-        String billDetailsFilePath = "/Users/pulkit.gupta/Desktop/splitwise/src/main/resources/BillDetails.csv";
-        BufferedReader billFileReader = new BufferedReader(new FileReader(billDetailsFilePath));
+        List<Bill> bills = readBillDetails(friends, workingDirectory);
 
+        return bills;
+    }
+
+    private List<Bill> readBillDetails(List<Friend> friends, String workingDirectory) throws IOException {
+        String line;
         List<Bill> bills = new LinkedList<>();
 
-        while ((line = friendFileReader.readLine()) != null) {
-            friends.add(createFriend(line));
-        }
+        String billDetailsFilePath = workingDirectory + "/src/main/resources/BillDetails.csv";
+        BufferedReader billFileReader = new BufferedReader(new FileReader(billDetailsFilePath));
 
         while ((line = billFileReader.readLine()) != null) {
             bills.add(createBill(line, friends));
@@ -41,11 +39,23 @@ public class TextFileReader implements Reader {
         return bills;
     }
 
+    private void readFriendDetails(List<Friend> friends, String workingDirectory) throws IOException {
+        String line;
+        String friendDetailsFilePath = workingDirectory + "/src/main/resources/FriendDetails.csv";
+        BufferedReader friendFileReader = new BufferedReader(new FileReader(friendDetailsFilePath));
+
+        while ((line = friendFileReader.readLine()) != null) {
+            friends.add(createFriend(line));
+        }
+    }
+
     private Friend createFriend(String line) {
         String[] friendRecord = line.split(comma);
 
-        if (friendRecord.length != three)
-            throw new RuntimeException("Record must be of size 3");
+        if (friendRecord.length != three) {
+
+            throw new RuntimeException(sizeMustBeThreeErrorMessage);
+        }
 
         String name = friendRecord[one];
         Double amount = Double.parseDouble(friendRecord[two]);
