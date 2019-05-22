@@ -9,25 +9,27 @@ import java.util.List;
 
 class GroupTest {
     @Test
-    @DisplayName("Should settleBills expense between four friends having three bills")
+    @DisplayName("Should settle expense between four friends having three bills")
     void expectsExpensesToBeSettledForFourFriends() {
         List<Friend> friends = new LinkedList<>();
-        Group group = new Group(createThreeTestBills(friends));
+        Group group = new Group(friends);
         List<Friend> settledFriends = getFourExpectedSettledFriends();
+        List<Bill> testBills = createThreeTestBills(friends);
 
-        group.settleBills(friends);
+        group.settle(testBills);
 
         Assertions.assertEquals(settledFriends, friends);
     }
 
     @Test
-    @DisplayName("Should settleBills expense between two friends having two bills")
+    @DisplayName("Should settle expense between two friends having two bills")
     void expectsExpensesToBeSettled() {
         List<Friend> friends = new LinkedList<>();
-        Group group = new Group(createTwoTestBills(friends));
+        Group group = new Group(friends);
         List<Friend> settledFriends = getTwoExpectedSettledFriends();
+        List<Bill> testBills = createTwoTestBills(friends);
 
-        group.settleBills(friends);
+        group.settle(testBills);
 
         Assertions.assertEquals(settledFriends, friends);
     }

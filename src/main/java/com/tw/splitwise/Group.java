@@ -3,20 +3,21 @@ package com.tw.splitwise;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//This class represents a group having bills to settleBills
+//This class represents a group of friends having bills to settle
 public class Group {
-    private final List<Bill> bills;
+    private final List<Friend> friends;
+    private static final int negativeOne = -1;
 
-    public Group(List<Bill> bills) {
-        this.bills = bills;
+    public Group(List<Friend> friends) {
+        this.friends = friends;
     }
 
-    public void settleBills(List<Friend> friends) {
+    public void settle(List<Bill> bills) {
         for (Bill bill : bills) {
             bill.settle();
         }
 
-        findWhoPaysWhom(friends);
+        this.findWhoPaysWhom(friends);
     }
 
     private void findWhoPaysWhom(List<Friend> friends) {
@@ -46,15 +47,14 @@ public class Group {
     }
 
     private void findWhoPaysHowMuchAmount(List<Friend> payers, List<Friend> receivers) {
-        Integer payerIndex = 0;
-        Integer receiverIndex = 0;
+        Integer payerIndex = 0, receiverIndex = 0;
 
         while (payerIndex < payers.size()) {
             Friend receiver = receivers.get(receiverIndex);
             Double amountToBeReceived = receiver.calculatePaidAndToPayDifference();
 
             Friend payer = payers.get(payerIndex);
-            Double amountCanBePaid = -payer.calculatePaidAndToPayDifference();
+            Double amountCanBePaid = payer.calculatePaidAndToPayDifference() * negativeOne;
 
             if (amountCanBePaid > amountToBeReceived) {
                 payer.settleAmountWith(receiver, amountToBeReceived);

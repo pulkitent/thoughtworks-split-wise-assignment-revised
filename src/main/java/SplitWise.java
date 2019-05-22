@@ -10,8 +10,6 @@ import static com.tw.io.Constant.fileReaderChoice;
 public class SplitWise {
 
     public static void main(String[] arg) throws IOException {
-        List<Friend> friends = new LinkedList<>();
-
         Scanner scanner = new Scanner(System.in);
         Reader reader = new ConsoleReader();
         Writer writer = new ConsoleWriter();
@@ -23,10 +21,11 @@ public class SplitWise {
             reader = new TextFileReader();
         }
 
-        List<Bill> bills = reader.read(friends);
+        List<Friend> friends = new LinkedList<>();
+        Group group = new Group(friends);
 
-        Group group = new Group(bills);
-        group.settleBills(friends);
+        List<Bill> bills = reader.read(friends);
+        group.settle(bills);
 
         writer.write(friends);
     }

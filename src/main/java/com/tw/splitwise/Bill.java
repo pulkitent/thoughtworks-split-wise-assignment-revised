@@ -24,7 +24,7 @@ public class Bill {
         int friendsCount = paidFor.size();
         for (Friend friend : this.paidFor) {
             Double ratio = findExpenseRatio(friend);
-            Double perFriendAmount = ratio * this.amount;
+            double perFriendAmount = ratio * this.amount;
 
             if (Double.compare(ratio, defaultExpenseRatio) == zero) {
                 perFriendAmount = perFriendAmount / friendsCount;
