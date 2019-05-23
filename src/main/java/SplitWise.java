@@ -24,9 +24,12 @@ public class SplitWise {
         List<Friend> friends = new LinkedList<>();
         Group group = new Group(friends);
 
-        List<Bill> bills = reader.read(friends);
-        group.settle(bills);
-
-        writer.write(friends);
+        try {
+            List<Bill> bills = reader.read(friends);
+            group.settle(bills);
+            writer.write(friends);
+        } catch (Exception ex) {
+            System.out.println("Wrong input error, Please try again");
+        }
     }
 }

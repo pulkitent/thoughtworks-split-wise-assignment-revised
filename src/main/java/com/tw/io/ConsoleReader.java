@@ -27,6 +27,11 @@ public class ConsoleReader implements Reader {
         System.out.println(enterNumberOfBills);
         int noOfBills = scanner.nextInt();
 
+        if (noOfBills == zero) {
+            System.out.println(invalidInputZeroBillsErrorMessage);
+            throw new RuntimeException("Input was zero number of bills");
+        }
+
         for (int billIndex = zero; billIndex < noOfBills; billIndex++) {
             System.out.println(EnterAmountOfBill + (billIndex + one));
             Double amount = scanner.nextDouble();
@@ -59,6 +64,10 @@ public class ConsoleReader implements Reader {
         System.out.println(enterNumberOfFriends);
         int noOfFriends = scanner.nextInt();
 
+        if (noOfFriends == zero) {
+            System.out.println(invalidInputZeroFriendsErrorMessage);
+            throw new RuntimeException("Input was zero number of friends");
+        }
         for (int friendIndex = zero; friendIndex < noOfFriends; friendIndex++) {
             System.out.println(enterNameOfFriend + (friendIndex + one));
             String name = scanner.next();

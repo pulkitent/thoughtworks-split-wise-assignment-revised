@@ -5,7 +5,7 @@ public class Constant {
     static final int five = 5;
     static double zeroPrecision = 0.0;
     static final int negativeOne = -1;
-    public static final double splitwiseRate = 0.02;
+    static final double splitwiseRate = 0.02;
     static final double defaultAmountPaid = 0.0;
     static final double defaultAmountToPay = 0.0;
     public static final int fileReaderChoice = 1;
