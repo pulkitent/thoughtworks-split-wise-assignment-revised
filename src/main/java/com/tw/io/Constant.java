@@ -17,6 +17,7 @@ public class Constant {
     static final String enterNameOfFriend = "Enter the name of friend number: ";
     static final String enterFriendId = "Enter the friend id (Starting from 0)";
     static final String sizeMustBeThreeErrorMessage = "Record must be of size 3";
+    public static final String wrongInputErrorMessage = "Wrong input error, Please try again";
     static final String enterNumberOfFriendsBill = "Enter number of friends for bill number: ";
     static final String enterNumberOfFriends = "Enter number of friends involved in the trip";
     static final String invalidInputZeroBillsErrorMessage = "Can not settle friends with 0 bills";

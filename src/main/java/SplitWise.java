@@ -3,6 +3,7 @@ import com.tw.io.*;
 
 import java.util.*;
 
+import static com.tw.io.Constant.wrongInputErrorMessage;
 import static com.tw.splitwise.Constant.enterChoiceMessage;
 import static com.tw.splitwise.Constant.fileReaderChoice;
 
@@ -28,7 +29,7 @@ public class SplitWise {
             group.settle(bills);
             writer.write(friends);
         } catch (Exception ex) {
-            System.out.println("Wrong input error, Please try again");
+            System.out.println(wrongInputErrorMessage);
         }
     }
 }
