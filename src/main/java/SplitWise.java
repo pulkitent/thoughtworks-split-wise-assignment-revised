@@ -4,8 +4,8 @@ import com.tw.io.*;
 import java.io.IOException;
 import java.util.*;
 
-import static com.tw.io.Constant.enterChoiceMessage;
-import static com.tw.io.Constant.fileReaderChoice;
+import static com.tw.splitwise.Constant.enterChoiceMessage;
+import static com.tw.splitwise.Constant.fileReaderChoice;
 
 public class SplitWise {
 

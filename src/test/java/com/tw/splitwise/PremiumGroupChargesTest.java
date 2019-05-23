@@ -7,12 +7,14 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.tw.splitwise.Constant.splitwiseRate;
+
 class PremiumGroupChargesTest {
     @Test
     @DisplayName("Should calculate premium charges when number of friends are >= 5")
     void expectPremiumChargesToBeCalculated() {
         List<Friend> friends = new LinkedList<>();
-        Charges charges = new PremiumGroupCharges();
+        Charges charges = new PremiumGroupCharges(splitwiseRate);
         List<Bill> bills = createFourTestBills(friends);
         List<Friend> expectedSettledFriends = getFiveExpectedSettledFriends();
 

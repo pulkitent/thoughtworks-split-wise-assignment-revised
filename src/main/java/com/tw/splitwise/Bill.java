@@ -3,15 +3,14 @@ package com.tw.splitwise;
 import java.util.List;
 import java.util.Map;
 
+import static com.tw.splitwise.Constant.*;
+
 //This class represents statement of the money owed for services
 public class Bill {
     private final Double amount;
     private final BillType type;
     private final List<Friend> paidFor;
     private final Map<Friend, Double> expenseRatio;
-
-    private final static Integer zero = 0;
-    private final static Double defaultExpenseRatio = 1.0;
 
     public Bill(Double amount, BillType type, List<Friend> paidFor, Map<Friend, Double> expenseRatio) {
         this.amount = amount;
@@ -41,7 +40,7 @@ public class Bill {
     }
 
     static Double findTotalAmount(List<Bill> bills) {
-        Double amount = 0.0;
+        Double amount = zeroPrecision;
         for (Bill bill : bills) {
             amount += bill.amount;
         }

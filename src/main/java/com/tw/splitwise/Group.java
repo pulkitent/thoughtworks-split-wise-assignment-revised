@@ -3,15 +3,16 @@ package com.tw.splitwise;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.tw.splitwise.Constant.*;
+
 //This class represents a group of friends having bills to settle
 public class Group {
     private final List<Friend> friends;
     private final Charges charges;
-    private static final int negativeOne = -1;
 
     public Group(List<Friend> friends) {
         this.friends = friends;
-        this.charges = new PremiumGroupCharges();
+        this.charges = new PremiumGroupCharges(splitwiseRate);
     }
 
     public void settle(List<Bill> bills) {
@@ -28,7 +29,7 @@ public class Group {
         sortPayersAndReceivers(payers, receivers);
         findWhoPaysHowMuchAmount(payers, receivers);
 
-        if (friends.size() >= 5) {
+        if (friends.size() >= five) {
             charges.calculate(friends, bills);
         }
     }
@@ -52,7 +53,7 @@ public class Group {
     }
 
     private void findWhoPaysHowMuchAmount(List<Friend> payers, List<Friend> receivers) {
-        Integer payerIndex = 0, receiverIndex = 0;
+        Integer payerIndex = zero, receiverIndex = zero;
 
         while (payerIndex < payers.size()) {
             Friend receiver = receivers.get(receiverIndex);

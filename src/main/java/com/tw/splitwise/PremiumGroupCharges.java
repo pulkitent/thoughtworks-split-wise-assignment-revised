@@ -2,17 +2,24 @@ package com.tw.splitwise;
 
 import java.util.List;
 
+import static com.tw.splitwise.Constant.*;
+
 public class PremiumGroupCharges implements Charges {
-    static final double defaultAmountToPay = 0.0;
+    double splitwiseRate;
+
+    PremiumGroupCharges(double splitwiseRate) {
+        this.splitwiseRate = splitwiseRate;
+    }
 
     @Override
     public void calculate(List<Friend> friends, List<Bill> bills) {
         Double totalAmount = Bill.findTotalAmount(bills);
         Integer noOfFriends = friends.size();
-        Double charge = (0.02 * totalAmount) / noOfFriends;
+        Double charge = (splitwiseRate * totalAmount) / noOfFriends;
 
         SettlementAmount settlementAmount = null;
-        Friend splitwiseAdmin = new Friend("Splitwise", 0.0, defaultAmountToPay);
+
+        Friend splitwiseAdmin = new Friend(splitwiseAdminName, defaultAmountPaid, defaultAmountToPay);
         for (Friend friend : friends) {
             settlementAmount = new SettlementAmount(charge, splitwiseAdmin);
             friend.addSettlementAmount(settlementAmount);
