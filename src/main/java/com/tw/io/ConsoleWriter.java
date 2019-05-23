@@ -12,7 +12,6 @@ public class ConsoleWriter implements Writer {
     public void write(List<Friend> friends) {
         for (Friend friend : friends) {
             for (SettlementAmount settlementAmount : friend.getSettlementAmount()) {
-
                 System.out.println(friend + hasToPay + settlementAmount);
             }
         }

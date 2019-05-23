@@ -2,5 +2,5 @@ package com.tw.splitwise;
 
 //This enum represents type of bill
 public enum BillType {
-    FOOD, MOVIE, CAB, SERVICECHARGES
+    SHOPPING, FOOD, MOVIE, CAB, SERVICECHARGES, OTHER
 }

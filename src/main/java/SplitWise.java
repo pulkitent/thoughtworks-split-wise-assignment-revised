@@ -1,7 +1,6 @@
 import com.tw.splitwise.*;
 import com.tw.io.*;
 
-import java.io.IOException;
 import java.util.*;
 
 import static com.tw.splitwise.Constant.enterChoiceMessage;
@@ -9,7 +8,7 @@ import static com.tw.splitwise.Constant.fileReaderChoice;
 
 public class SplitWise {
 
-    public static void main(String[] arg) throws IOException {
+    public static void main(String[] arg) {
         Scanner scanner = new Scanner(System.in);
         Reader reader = new ConsoleReader();
         Writer writer = new ConsoleWriter();

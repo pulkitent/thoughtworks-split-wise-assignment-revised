@@ -23,13 +23,14 @@ public class ConsoleReader implements Reader {
 
     private List<Bill> readBillDetails(List<Friend> friends, Scanner scanner) {
         List<Bill> bills = new LinkedList<>();
+        String message = "Input was zero number of bills";
 
         System.out.println(enterNumberOfBills);
         int noOfBills = scanner.nextInt();
 
         if (noOfBills == zero) {
             System.out.println(invalidInputZeroBillsErrorMessage);
-            throw new RuntimeException("Input was zero number of bills");
+            throw new RuntimeException(message);
         }
 
         for (int billIndex = zero; billIndex < noOfBills; billIndex++) {
@@ -38,8 +39,10 @@ public class ConsoleReader implements Reader {
             System.out.println(enterTheTypeOfBill);
             String type = scanner.next();
 
+            BillType billType = BillType.valueOf(type.toUpperCase());
+
             List<Friend> billWasPaidFor = readFriendsForBillWasPaid(friends, scanner, billIndex);
-            Bill bill = new Bill(amount, BillType.valueOf(type.toUpperCase()), billWasPaidFor, null);
+            Bill bill = new Bill(amount, billType, billWasPaidFor, null);
             bills.add(bill);
         }
         return bills;
@@ -63,10 +66,11 @@ public class ConsoleReader implements Reader {
     private void readFriendDetails(List<Friend> friends, Scanner scanner) {
         System.out.println(enterNumberOfFriends);
         int noOfFriends = scanner.nextInt();
+        String message = "Input was zero number of friends";
 
         if (noOfFriends == zero) {
             System.out.println(invalidInputZeroFriendsErrorMessage);
-            throw new RuntimeException("Input was zero number of friends");
+            throw new RuntimeException(message);
         }
         for (int friendIndex = zero; friendIndex < noOfFriends; friendIndex++) {
             System.out.println(enterNameOfFriend + (friendIndex + one));

@@ -16,7 +16,6 @@ public class TextFileReader implements Reader {
 
     @Override
     public List<Bill> read(List<Friend> friends) throws IOException {
-        String line = "";
         String workingDirectory = System.getProperty("user.dir");
 
         readFriendDetails(friends, workingDirectory);

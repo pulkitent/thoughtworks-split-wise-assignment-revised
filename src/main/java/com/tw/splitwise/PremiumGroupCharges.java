@@ -5,7 +5,7 @@ import java.util.List;
 import static com.tw.splitwise.Constant.*;
 
 public class PremiumGroupCharges implements Charges {
-    double splitwiseRate;
+    private final double splitwiseRate;
 
     PremiumGroupCharges(double splitwiseRate) {
         this.splitwiseRate = splitwiseRate;
