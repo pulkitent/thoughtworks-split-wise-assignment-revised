@@ -7,6 +7,7 @@ import static com.tw.io.Constant.wrongInputErrorMessage;
 import static com.tw.splitwise.Constant.enterChoiceMessage;
 import static com.tw.splitwise.Constant.fileReaderChoice;
 
+//This class is the main application startup class
 public class SplitWise {
 
     public static void main(String[] arg) {

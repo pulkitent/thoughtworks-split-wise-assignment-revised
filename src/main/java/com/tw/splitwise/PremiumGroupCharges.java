@@ -4,6 +4,7 @@ import java.util.List;
 
 import static com.tw.splitwise.Constant.*;
 
+//This class represents premium user charges to be paid
 public class PremiumGroupCharges implements Charges {
     private final double splitwiseRate;
 

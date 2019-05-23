@@ -1,5 +1,6 @@
 package com.tw.splitwise;
 
+//This class represents constants used in code
 public class Constant {
     static final int zero = 0;
     static final int five = 5;
