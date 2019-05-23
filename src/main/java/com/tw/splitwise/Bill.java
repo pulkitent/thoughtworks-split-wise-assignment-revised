@@ -39,4 +39,12 @@ public class Bill {
             return defaultExpenseRatio;
         return expenseRatio.getOrDefault(friend, defaultExpenseRatio);
     }
+
+    static Double findTotalAmount(List<Bill> bills) {
+        Double amount = 0.0;
+        for (Bill bill : bills) {
+            amount += bill.amount;
+        }
+        return amount;
+    }
 }
