@@ -68,12 +68,5 @@ public class ConsoleReader implements Reader {
             Friend friend = new Friend(name, amount, defaultAmountToPay);
             friends.add(friend);
         }
-
-        if (noOfFriends >= 5)
-            addSplitWiseAdminUserForPremiumGroup(friends);
-    }
-
-    private void addSplitWiseAdminUserForPremiumGroup(List<Friend> friends) {
-        friends.add(new Friend("Splitwise", defaultAmountToPay, defaultAmountToPay));
     }
 }
