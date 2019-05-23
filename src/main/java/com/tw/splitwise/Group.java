@@ -6,26 +6,31 @@ import java.util.stream.Collectors;
 //This class represents a group of friends having bills to settle
 public class Group {
     private final List<Friend> friends;
+    private final Charges charges;
     private static final int negativeOne = -1;
 
     public Group(List<Friend> friends) {
         this.friends = friends;
+        this.charges = new PremiumGroupCharges();
     }
 
     public void settle(List<Bill> bills) {
         for (Bill bill : bills) {
             bill.settle();
         }
-
-        this.findWhoPaysWhom(friends);
+        this.findWhoPaysWhom(friends, bills);
     }
 
-    private void findWhoPaysWhom(List<Friend> friends) {
+    private void findWhoPaysWhom(List<Friend> friends, List<Bill> bills) {
         List<Friend> payers = findPayers(friends);
         List<Friend> receivers = findReceivers(friends);
 
         sortPayersAndReceivers(payers, receivers);
         findWhoPaysHowMuchAmount(payers, receivers);
+
+        if (friends.size() >= 5) {
+            charges.calculate(friends, bills);
+        }
     }
 
     private List<Friend> findPayers(List<Friend> friends) {
