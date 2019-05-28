@@ -10,9 +10,9 @@ public class Group {
     private final List<Friend> friends;
     private final Charges charges;
 
-    public Group(List<Friend> friends) {
+    public Group(List<Friend> friends, Charges charges) {
         this.friends = friends;
-        this.charges = new PremiumGroupCharges(splitwiseRate);
+        this.charges = charges;
     }
 
     public void settle(List<Bill> bills) {

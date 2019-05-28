@@ -4,8 +4,7 @@ import com.tw.io.*;
 import java.util.*;
 
 import static com.tw.io.Constant.wrongInputErrorMessage;
-import static com.tw.splitwise.Constant.enterChoiceMessage;
-import static com.tw.splitwise.Constant.fileReaderChoice;
+import static com.tw.splitwise.Constant.*;
 
 //This class is the main application startup class
 public class SplitWise {
@@ -23,7 +22,8 @@ public class SplitWise {
         }
 
         List<Friend> friends = new LinkedList<>();
-        Group group = new Group(friends);
+        Charges charges = new PremiumGroupCharges(splitwiseRate);
+        Group group = new Group(friends, charges);
 
         try {
             List<Bill> bills = reader.read(friends);

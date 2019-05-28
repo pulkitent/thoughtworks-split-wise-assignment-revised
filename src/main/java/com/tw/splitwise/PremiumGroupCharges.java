@@ -8,7 +8,7 @@ import static com.tw.splitwise.Constant.*;
 public class PremiumGroupCharges implements Charges {
     private final double splitwiseRate;
 
-    PremiumGroupCharges(double splitwiseRate) {
+    public PremiumGroupCharges(double splitwiseRate) {
         this.splitwiseRate = splitwiseRate;
     }
 
