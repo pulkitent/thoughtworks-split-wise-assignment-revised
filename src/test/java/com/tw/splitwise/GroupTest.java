@@ -7,12 +7,15 @@ import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.tw.splitwise.Constant.splitwiseRate;
+
 class GroupTest {
     @Test
     @DisplayName("Should settle expense between four friends having three bills")
     void expectsExpensesToBeSettledForFourFriends() {
         List<Friend> friends = new LinkedList<>();
-        Group group = new Group(friends);
+        Charges charges = new PremiumGroupCharges(splitwiseRate);
+        Group group = new Group(friends, charges);
         List<Friend> settledFriends = getFourExpectedSettledFriends();
         List<Bill> testBills = createThreeTestBills(friends);
 
@@ -25,7 +28,8 @@ class GroupTest {
     @DisplayName("Should settle expense between two friends having two bills")
     void expectsExpensesToBeSettled() {
         List<Friend> friends = new LinkedList<>();
-        Group group = new Group(friends);
+        Charges charges = new PremiumGroupCharges(splitwiseRate);
+        Group group = new Group(friends, charges);
         List<Friend> settledFriends = getTwoExpectedSettledFriends();
         List<Bill> testBills = createTwoTestBills(friends);
 
@@ -38,7 +42,8 @@ class GroupTest {
     @DisplayName("Should settle expense between 5 friends having 4 bills with premium charges")
     void expectsExpensesWithPremiumToBeSettled() {
         List<Friend> friends = new LinkedList<>();
-        Group group = new Group(friends);
+        Charges charges = new PremiumGroupCharges(splitwiseRate);
+        Group group = new Group(friends, charges);
         List<Friend> settledFriends = getFiveExpectedSettledFriends();
         List<Bill> testBills = createFourTestBills(friends);
 
