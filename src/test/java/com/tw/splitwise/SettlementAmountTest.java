@@ -4,14 +4,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.tw.splitwise.Constant.destinationCurrencyMessage;
+
 class SettlementAmountTest {
     @Test
     @DisplayName("Should stringify amount properly")
     void expectsToStringifyAmounnt() {
         SettlementAmount settlementAmount = new SettlementAmount(100.0, new Friend("Rahul", 100.0, 100.0));
-        String expectedStringifiedAmount = "100.0 Rahul";
+        CurrencyType sourceCurrencyType = CurrencyType.INR;
+        CurrencyType destinationCurrencyType = CurrencyType.INR;
+        CurrencyConverter converter = new CurrencyConverter(sourceCurrencyType, destinationCurrencyType);
+        String expectedStringifiedAmount = "INR 100.0 Rahul";
 
-        Assertions.assertEquals(expectedStringifiedAmount, settlementAmount.toString());
+        Assertions.assertEquals(expectedStringifiedAmount, settlementAmount.toString(converter));
     }
 
     @Test
