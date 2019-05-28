@@ -23,14 +23,13 @@ public class ConsoleReader implements Reader {
 
     private List<Bill> readBillDetails(List<Friend> friends, Scanner scanner) {
         List<Bill> bills = new LinkedList<>();
-        String message = "Input was zero number of bills";
 
         System.out.println(enterNumberOfBills);
         int noOfBills = scanner.nextInt();
 
         if (noOfBills == zero) {
             System.out.println(invalidInputZeroBillsErrorMessage);
-            throw new RuntimeException(message);
+            throw new RuntimeException(zeroBillsErrorMessage);
         }
 
         for (int billIndex = zero; billIndex < noOfBills; billIndex++) {
@@ -66,11 +65,11 @@ public class ConsoleReader implements Reader {
     private void readFriendDetails(List<Friend> friends, Scanner scanner) {
         System.out.println(enterNumberOfFriends);
         int noOfFriends = scanner.nextInt();
-        String message = "Input was zero number of friends";
+
 
         if (noOfFriends == zero) {
             System.out.println(invalidInputZeroFriendsErrorMessage);
-            throw new RuntimeException(message);
+            throw new RuntimeException(zeroFriendsErrorMessage);
         }
         for (int friendIndex = zero; friendIndex < noOfFriends; friendIndex++) {
             System.out.println(enterNameOfFriend + (friendIndex + one));
