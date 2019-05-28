@@ -21,6 +21,8 @@ public class SplitWise {
             reader = new TextFileReader();
         }
 
+        CurrencyConverter converter = createCurrencyConverter(scanner);
+
         List<Friend> friends = new LinkedList<>();
         Charges charges = new PremiumGroupCharges(splitwiseRate);
         Group group = new Group(friends, charges);
@@ -28,9 +30,18 @@ public class SplitWise {
         try {
             List<Bill> bills = reader.read(friends);
             group.settle(bills);
-            writer.write(friends);
+            writer.write(friends, converter);
         } catch (Exception ex) {
             System.out.println(wrongInputErrorMessage);
         }
+    }
+
+    private static CurrencyConverter createCurrencyConverter(Scanner scanner) {
+        System.out.println(sourceCurrencyMessage);
+        CurrencyType sourceCurrencyType = CurrencyType.valueOf(scanner.next().toUpperCase());
+        System.out.println(destinationCurrencyMessage);
+        CurrencyType destinationCurrencyType = CurrencyType.valueOf(scanner.next().toUpperCase());
+
+        return new CurrencyConverter(sourceCurrencyType, destinationCurrencyType);
     }
 }

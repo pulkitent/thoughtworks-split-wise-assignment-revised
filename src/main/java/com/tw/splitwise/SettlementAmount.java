@@ -12,9 +12,10 @@ public class SettlementAmount {
         this.toBePaidTo = toBePaidTo;
     }
 
-    @Override
-    public String toString() {
-        return value + " " + toBePaidTo;
+    public String toString(CurrencyConverter converter) {
+        Double convertedValue = converter == null ? value : converter.convert(value);
+        String currencyType = converter.getDestinationCurrencyType().toString();
+        return currencyType + " " + convertedValue + " " + toBePaidTo;
     }
 
     @Override
