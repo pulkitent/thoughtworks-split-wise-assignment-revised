@@ -1,3 +1,11 @@
+This is a gradle based on java. It's an Objected Oriented Design(OOD) problem generally askied in interviews. Main reason behind asking these kind of problems in interview is to see whether a candidate can do following :
+1. Can a candidate write a working code in given short span of time.
+2. Can a candidate write higly readbale code. Intention must be clear by reading the code.
+3. Can a candidate follow the principle the of DRY (Don't Repeat Yourself) and avoid to break encapsulation by following Domain Driven Design(DDD).
+4. Can a candidate achieve the solution with minimum number of elements using YAGNI principle (that is without creating unnecesarry interfaces etc).
+
+**PROBLEM STATEMENT**
+
 A group of friends go out for an outing to explore Chennai. On the trip, they incur various expenses like bus tickets, taxi fare, museum tickets and food etc. One of them paid for taxi while other one paid for the evening snacks. Similarly, different expenses were paid by them in a random manner. Also, for some expenses, only few people are part of it.
 
 Now they need need an application that can tell how much a person owes and how much he needs to give.
